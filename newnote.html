@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upend Editor</title>
+  <meta name="description" content="Upend Code Editor ">
+  <meta name="robots" content="upend, code, editor">
+  <meta name="author" content="Upend">
+  <link rel="icon" href="assets/Upend.png" type="image/x-icon" />
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="fontawesome-free-5.15.1/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="keywords"
+    content="Live code editor, online code editor, live html editor, live css editor, live javascript editor">
+  <link rel="stylesheet" href="css/newnote.css" />
+  <link rel="stylesheet" href="css/editor.css" />
+</head>
+
+<body>
+
+  <div class="popup-box">
+    <div class="popup">
+      <div class="content">
+        <header>
+          <p></p>
+          <i class="uil uil-times"></i>
+        </header>
+        <form action="#">
+          <div class="row title">
+            <label>Başlık İsmi</label>
+            <input type="text" spellcheck="false">
+          </div>
+          <div class="row description">
+            <label>Proje Açıklaması</label>
+            <textarea spellcheck="false"></textarea>
+          </div>
+          <button></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <li class="add-box">
+      <div class="icon"><i class="uil uil-plus"></i></div>
+      <p>Yeni Proje Oluştur</p>
+    </li>
+  </div>
+
+  <div class="sidebar">
+    <div class="logo-details">
+      <img src="assets/Upend.png" id="logo-btn" alt="Upend Logo">
+      <a href="index.html">
+        <div class="logo_name">UpendCode</div>
+      </a>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Upend Arayın...">
+        <span class="tooltip">Ara</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-folder'></i>
+          <span class="links_name">Dosya</span>
+        </a>
+        <span class="tooltip">Dosya</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-share-alt'></i>
+          <span class="links_name">Upend Paylaş</span>
+        </a>
+        <span class="tooltip">Upend Paylaş</span>
+      </li>
+      <li>
+        <a onclick="runEdit(3)">
+          <i class="fa-solid fa-play"></i>
+          <span class="links_name">Çalıştır</span>
+        </a>
+        <span class="tooltip">Çalıştır</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Eklentiler</span>
+        </a>
+        <span class="tooltip">Eklentiler</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Hesabım</span>
+        </a>
+        <span class="tooltip">Hesabım</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Ayarlar</span>
+        </a>
+        <span class="tooltip">Ayarlar</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="app-container">
+    <div class="app-right">
+      <button class="close-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-x">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="profile-box">
+        <a href="#">
+          <div class="profile-photo-wrapper">
+            <img src="assets/Erebos.png" alt="profile">
+          </div>
+        </a>
+        <p class="profile-text">Upend User</p>
+        <p class="profile-subtext">Upend <strong>Developer</strong></p>
+
+        <a href="#">
+          <button id="edit-btn">Dosya Aç</button> <button id="edit-btn">Klasör Aç</button>
+        </a>
+        <br>
+      </div>
+      <div class="app-right-content">
+        <div class="app-right-section">
+          <div class="app-right-section-header">
+            <h2>Kütüphanem</h2>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+          <div class="activity-line">
+            <span class="activity-icon applicant">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-file-plus">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="12" y1="18" x2="12" y2="12" />
+                <line x1="9" y1="15" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="activity-text-wrapper">
+              <p class="activity-text">Proje İsmi</p>
+              <a class="activity-link" href="#">Projeyi Görüntüle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#logo-btn");
+    let searchBtn = document.querySelector(".bx-search");
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();//calling the function(optional)
+    });
+
+    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+      sidebar.classList.toggle("open");
+      menuBtnChange(); //calling the function(optional)
+    });
+
+    // following are the code to change sidebar button(optional)
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+      }
+    }
+  </script>
+
+</body>
+
+</html>
